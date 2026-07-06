@@ -4,6 +4,7 @@
 #include<cstdlib>
 using namespace std;
 
+//入力チェック関数
 void InputCheck(int& inputNum)
 {
 	cout << "じゃんけんの手を入力してください\n";
@@ -15,32 +16,37 @@ void InputCheck(int& inputNum)
 	}
 }
 
-void Judge(int playerNum, int cpuNum, int& playerExp)
+//勝敗判定関数
+void Judge(int playerNum, int cpuNum, int& playerExp,int& level)
 {
 	int judge = playerNum - cpuNum;
 	if (judge == 0) cout << "あいこです。\n";
 	else if (judge == -1 || judge == 2)
 	{
 		cout << "あなたの負けです。\n";
-		playerWin = false;
 	}
 	else
 	{
-		cout << "あなたの勝ちです。\n";
-		playerWin = true;
+		cout << "あなたの勝ちです！\n";
+		//経験値の計算
+		int printExp = rand() % (EXP_MAX + 1) + EXP_MIN;
+		//経験値の加算
+		playerExp += printExp;
+		//獲得した経験値の表示
+		cout << printExp << "の経験値を獲得しました！\n";
+		//レベルアップの判定
+		if (playerExp >= LEVEL_EXP)
+		{
+			level++;
+			//経験値の減算
+			playerExp -= LEVEL_EXP;
+			cout << "レベルアップ！Lv" << level << "になりました！\n";
+		}
 	}
 }
 
-void GetEXP(int& exp, int& level)
-{
-	if (playerWin == true) exp += rand() % (EXP_MAX + 1) + EXP_MIN;
-	if (exp >= LEVEL_EXP)
-	{
-		level++;
-		exp -= LEVEL_EXP;
-	}
-}
 
+//手の表示関数
 void HandPrint(int handNum)
 {
 	switch (handNum)
@@ -57,6 +63,7 @@ void HandPrint(int handNum)
 	}
 }
 
+//情報表示関数
 void InformationPrint(int exp, int level)
 {
 	cout << "==============================\n"
@@ -65,6 +72,7 @@ void InformationPrint(int exp, int level)
 		<< "==============================\n";
 }
 
+//じゃんけんゲーム関数
 void Game()
 {
 	//変数
@@ -75,8 +83,26 @@ void Game()
 	//乱数の初期化
 	srand((unsigned int)time(NULL));
 
-	InformationPrint(playerExp, playerLevel);
-
-
+	//ゲームについての説明
+	cout << "CPUとじゃんけんをしてレベルをあげましょう！\n"
+		<< "じゃんけんの手は0:グー、1:パー、2:チョキです。\n"
+		<< "経験値が20たまるとレベルが1上がります。\n"
+		<< "レベルが5になるとゲームクリアです。\n";
+	//ゲームループ
+	while (playerLevel < LEVEL_MAX)
+	{
+		//情報表示
+		InformationPrint(playerExp, playerLevel);
+		//プレイヤーの手の入力
+		InputCheck(playerHand);
+		//プレイヤーの手とCPUの手を表示
+		cout << "あなた";
+		HandPrint(playerHand);
+		cpuHand = rand() % (HAND_MAX + 1);
+		cout << "CPU";
+		HandPrint(cpuHand);
+		//勝敗判定
+		Judge(playerHand, cpuHand, playerExp,playerLevel);
+	}
 }
 
