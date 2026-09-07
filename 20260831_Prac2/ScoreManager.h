@@ -3,13 +3,20 @@
 class ScoreManager
 {
 private:
-	int currentScore;
-	int highScore;
+	//メンバ変数
+	int currentScore; //現在のスコア
+	int highScore;	//ハイスコア
 
 public:
 
-	int addPoints(int points);
+	//コンストラクタ
+	ScoreManager();
 
+	//メンバ関数
+	void addPoints(int points); //ポイント加算
+	void resetScore();	//スコアリセット
+	void updateHighScore();	//ハイスコア更新
+	void displayScores();	//スコア表示
 
 
 };
