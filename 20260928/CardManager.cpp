@@ -14,7 +14,7 @@ void CardManager::CreateCard()
 	{
 		for (int i = 0; i < SAME_CARD_MAX; i++)
 		{
-			cards[index] = number;
+			cards[index] = number + 1;
 			index++;
 		}
 	}

@@ -19,8 +19,13 @@ bool Turn::PlayPlayerTurn(player* player, CardManager* cardManager)
 			return true;
 		}
 
+		cout << "\nカードを引きますか？？\n";
+		cout << INPUT_YES << ":Yes\n";
+		cout << INPUT_NO << ":No\n";
+
 		int input;
-		player->InputCheck(input);
+
+		cin >> input;
 
 		//カードを引かない
 		if (input == INPUT_NO)
@@ -53,3 +58,58 @@ bool Turn::PlayPlayerTurn(player* player, CardManager* cardManager)
 
 	}
 }
+
+void Turn::PlayCpuTurn(player* player, cpu* cpu, CardManager* cardManager)
+{
+	cout << "\n===========================\n"
+		<< "CPUターン\n"
+		<< "===========================\n";
+	player->ShowStatus();
+	cpu->ShowStatus();
+
+	while (true)
+	{
+		if (cpu->GetTotal() == TARGET_SCORE)
+		{
+			cout << "CPUの合計: 21 \n";
+			break;
+		}
+
+		if (cpu->GetTotal() >= BURST_SCORE)
+		{
+			cout << "\nCPUはバーストしました。\n";
+			break;
+		}
+
+		if (cpu->GetTotal() <= AUTO_DRAW_SCORE)
+		{
+			cout << "\nCPUは15以下なのでカードを引きます。\n";
+		}
+		else if (cpu->GetTotal() < player->GetTotal())
+		{
+			cout << "CPUはプレイヤーより小さいのでカードを引きます。\n";
+		}
+		else
+		{
+			cout << "CPUはプレイヤー以上になりました。\n";
+			cout << "CPUはカードを引きません。\n";
+
+			break;
+		}
+
+		//カードを取得
+		int card = cardManager->DrawCard();
+		cout << "\nCPUがカードを引きました。\n";
+		cout << "引いたカード: " << card << endl;
+		//cpuに引いたカードを追加
+		cpu->AddCard(card);
+		cpu->ShowStatus();
+
+
+	}
+
+
+
+}
+
+

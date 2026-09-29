@@ -17,6 +17,10 @@ int cpu::GetTotal()
 	return score;
 }
 
+void cpu::ShowStatus()
+{
+	cout << "cpu‚Ì‡Œv:" << score << endl;
+}
 
 
 

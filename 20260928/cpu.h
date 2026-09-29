@@ -11,6 +11,7 @@ public:
 	void AddCard(int card);
 	//‡Œv“_‚ğæ“¾
 	int GetTotal();
-	
+	//Œ»İ‚Ìó‘Ô‚ğ•\¦
+	void ShowStatus();
 };
 
