@@ -3,7 +3,18 @@
 class Player :public Character
 {
 public:
-	Player(int hp, int power, int defence, int evasion);
+
+	/// <summary>
+	/// Playerコンストラクタ
+	/// </summary>
+	Player();
+
+	/// <summary>
+	/// プレイヤーの行動選択
+	/// </summary>
+	/// <param name="target"></param>
+	void Action(Character& target);
+
 private:
 	int choiceNum;
 };

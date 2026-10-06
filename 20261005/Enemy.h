@@ -3,7 +3,9 @@
 class Enemy:public Character
 {
 public:
-	Enemy(int hp, int power, int defence, int evasion);
+	Enemy();
+
+	void Action(Character& target);
 
 
 };
