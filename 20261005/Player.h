@@ -15,7 +15,5 @@ public:
 	/// <param name="target"></param>
 	void Action(Character& target);
 
-private:
-	int choiceNum;
 };
 

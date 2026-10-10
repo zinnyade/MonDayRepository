@@ -18,7 +18,7 @@ void Player::Action(Character& target)
 	while (true)
 	{
 		cin >> choice;
-		if (Config::ACTION_ATTACK < choice || Config::ACTION_HEAL < choice)
+		if (Config::ACTION_ATTACK > choice || Config::ACTION_HEAL < choice)
 		{
 			cout << "“ü—Í”ÍˆÍ‚ªˆÙ‚È‚è‚Ü‚·B‚à‚¤ˆê“x“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n";
 		}

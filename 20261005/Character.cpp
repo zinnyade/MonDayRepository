@@ -39,27 +39,27 @@ void Character::Attack(Character& target)
 			<< "ダメージは0です。\n";
 		return;
 	}
-
-	//ダメージ計算
-	int damage = attackValue - target.defence;
-
-	if (damage < 0)
+	else
 	{
-		damage = 0;
+		//ダメージ計算
+		int damage = attackValue - target.defence;
+
+		if (damage < 0)
+		{
+			damage = 0;
+		}
+
+		target.hp -= damage;
+
+		cout << "攻撃成功！\n"
+			<< damage << "ダメージです。\n";
+
+		//生存判定
+		if (target.hp < Config::DEAD_HP)
+		{
+			target.hp = 0;
+		}
 	}
-
-	target.hp -= damage;
-
-	cout << "攻撃成功！\n"
-		<< damage << "ダメージです。\n";
-
-	//生存判定
-	if (target.hp < Config::DEAD_HP)
-	{
-		target.hp = 0;
-	}
-
-
 }
 
 void Character::Heal()
