@@ -6,22 +6,33 @@
 using namespace std;
 int main(void)
 {
+	string playerName;
+	string enemyName;
+	string bossName;
+
+	cout << "それぞれの名前を入力してください。\n";
+	cout << "プレイヤー\n";
+	cin >> playerName;
+	cout << "敵\n";
+	cin >> enemyName;
+	cout << "ボス\n";
+	cin >> bossName;
 	//コンストラクタ
-	Character character("かに");
-	Player player("プレイヤー");
-	Enemy enemy("エネミー");
-	Boss boss("ボス");
+	//Character character("かに");
+	Player player(playerName);
+	Enemy enemy(enemyName);
+	Boss boss(bossName);
 
-	cout << character.GetName() << endl;
-	character.Attack();
+	/*cout << character.GetName() << endl;
+	character.Attack();*/
 
-	cout << player.GetName() << endl;
+	cout << "プレイヤーの名前" << player.GetName() << endl;
 	player.Attack();
 
-	cout << enemy.GetName() << endl;
+	cout << "敵の名前" << enemy.GetName() << endl;
 	enemy.Attack();
 
-	cout << boss.GetName() << endl;
+	cout << "ボスの名前" << boss.GetName() << endl;
 	boss.Attack();
 
 
