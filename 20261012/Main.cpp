@@ -3,6 +3,7 @@
 #include"Player.h"
 #include"Enemy.h"
 #include"Boss.h"
+#include"BattleManager.h"
 using namespace std;
 int main(void)
 {
@@ -22,20 +23,21 @@ int main(void)
 	Player player(playerName);
 	Enemy enemy(enemyName);
 	Boss boss(bossName);
+	BattleManager battle;
 
 	/*cout << character.GetName() << endl;
 	character.Attack();*/
 
-	cout << "プレイヤーの名前" << player.GetName() << endl;
+	/*cout << "プレイヤーの名前" << player.GetName() << endl;
 	player.Attack();
 
 	cout << "敵の名前" << enemy.GetName() << endl;
 	enemy.Attack();
 
 	cout << "ボスの名前" << boss.GetName() << endl;
-	boss.Attack();
+	boss.Attack();*/
 
-
+	battle.StartBattle(&player, &enemy, &boss);
 
 
 
