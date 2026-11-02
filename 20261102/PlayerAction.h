@@ -1,4 +1,7 @@
 #pragma once
-class PlayerAction
-{};
-
+enum class PlayerAction
+{
+	Attack,
+	Defense,
+	Heal
+};
