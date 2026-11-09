@@ -2,6 +2,5 @@
 enum class EnemyAction
 {
 	Attack,
-	Defense,
-	Heal
+	Defense
 };

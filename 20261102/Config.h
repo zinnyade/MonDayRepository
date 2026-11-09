@@ -18,4 +18,10 @@ namespace Config
 	//Enemy
 	constexpr int ENEMY_ATTACK_DAMAGE = 20;
 	constexpr int ENEMY_DEFENSE_DEFENSE = 10;
+
+	//EnemyChoice
+	constexpr int ENEMY_ACTION_MIN = 0;
+	constexpr int ENEMY_ACTION_MAX = 1;
+
+	constexpr int ENEMY_ATTACK_CHOICE = 2;
 }
