@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <limits>
-
+using namespace std;
 //コンストラクタ
-Player::Player() :Character(Config::INITIAL_HP) {}
+Player::Player(const string& name) :Character(Config::INITIAL_HP),Name(name) {}
 
 //プレイヤーの行動を選択する
 PlayerAction Player::SelectAction() const
@@ -13,11 +13,11 @@ PlayerAction Player::SelectAction() const
 	int playerInput;
 	while (true)
 	{
-		std::cout << "行動を選択してください" << std::endl;
-		std::cout << Config::PLAYER_ATTACK_INPUT << ":攻撃" << std::endl;
-		std::cout << Config::PLAYER_DEFENSE_INPUT << ":防御" << std::endl;
-		std::cout << Config::PLAYER_HEAL_INPUT << ":回復" << std::endl;
-		std::cin >> playerInput;
+		cout << "行動を選択してください" << std::endl;
+		cout << Config::PLAYER_ATTACK_INPUT << ":攻撃" << std::endl;
+		cout << Config::PLAYER_DEFENSE_INPUT << ":防御" << std::endl;
+		cout << Config::PLAYER_HEAL_INPUT << ":回復" << std::endl;
+		cin >> playerInput;
 		
 		if (playerInput == Config::PLAYER_ATTACK_INPUT)
 		{
@@ -31,13 +31,18 @@ PlayerAction Player::SelectAction() const
 		{
 			return PlayerAction::Heal;
 		}
-		std::cout << "無効な入力です。もう一度入力してください。" << std::endl;
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cout << "無効な入力です。もう一度入力してください。" << std::endl;
+		cin.clear();
+		
 	}
 }
 
 void Player::Heal(int amount)
 {
 	RecoverHP(amount);
+}
+
+string Player::GetName() const
+{
+	return Name;
 }
