@@ -29,5 +29,5 @@ int Enemy::GetHp() const
 
 bool Enemy::IsAlive()
 {
-	if(hp = 0) return 
+	if (hp = 0) return false;
 }
