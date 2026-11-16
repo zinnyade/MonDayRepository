@@ -13,6 +13,12 @@ public:
 
 	void Draw() const;
 
+	void Damage(int damage);
+
+	int GetHp() const;
+
+	bool IsAlive();
+
 
 };
 

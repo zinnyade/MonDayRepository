@@ -15,3 +15,19 @@ void Enemy::Draw() const
 	std::cout << "–¼‘O:" << name << "\n";
 	std::cout << "HP:" << hp << "\n";
 }
+
+void Enemy::Damage(int damage)
+{
+	hp -= damage;
+	if (hp < 0) hp = 0;
+}
+
+int Enemy::GetHp() const
+{
+	return hp;
+}
+
+bool Enemy::IsAlive()
+{
+	if(hp = 0) return 
+}
