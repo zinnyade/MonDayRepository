@@ -4,20 +4,30 @@
 class Enemy
 {
 private:
-	std::string name;
-	int hp;
+	int hp; //敵のHP
 
 public:
-	Enemy(const std::string& name);
+	//コンストラクタとデストラクタ
+	Enemy();
 	~Enemy();
 
-	void Draw() const;
-
+	/// <summary>
+	/// 被ダメージ関数
+	/// </summary>
+	/// <param name="damage">ダメージ量</param>
 	void Damage(int damage);
 
+	/// <summary>
+	/// HP取得
+	/// </summary>
+	/// <returns>現在のHP</returns>
 	int GetHp() const;
 
-	bool IsAlive();
+	/// <summary>
+	/// 生存フラグ
+	/// </summary>
+	/// <returns>生存</returns>
+	bool IsAlive() const;
 
 
 };

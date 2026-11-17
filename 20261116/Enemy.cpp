@@ -1,33 +1,25 @@
 #include "Enemy.h"
+#include "Config.h"
 
-Enemy::Enemy(const std::string& name): name(name),hp(100)
-{
-	std::cout << name << "が出現した！\n";
-}
+//コンストラクタとデストラクタ
+Enemy::Enemy() :hp(Config::ENEMY_HP) {}
+Enemy::~Enemy(){}
 
-Enemy::~Enemy()
-{
-	std::cout << name << "は破棄されました。\n";
-}
-
-void Enemy::Draw() const
-{
-	std::cout << "名前:" << name << "\n";
-	std::cout << "HP:" << hp << "\n";
-}
-
+//被ダメージ関数
 void Enemy::Damage(int damage)
 {
-	hp -= damage;
-	if (hp < 0) hp = 0;
+	hp -= damage; //hpをダメージ量分減らす
+	if (hp < 0) hp = 0; //hpが0未満なら0にする
 }
 
+//HPの取得
 int Enemy::GetHp() const
 {
 	return hp;
 }
 
-bool Enemy::IsAlive()
+//生存フラグ
+bool Enemy::IsAlive() const
 {
-	if (hp = 0) return false;
+	return hp > 0; //HPが0ではないことを返す
 }

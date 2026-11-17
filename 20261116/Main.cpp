@@ -1,8 +1,4 @@
-#include<iostream>
-#include<memory>
-#include"Enemy.h"
-
-
+#include"Game.h"
 
 int main(void)
 {
@@ -33,12 +29,9 @@ int main(void)
 
 	//enemy->Draw();
 
+	Game game; //Gameクラスをもとにインスタンスを作成。
 
-	std::shared_ptr<Enemy> enemyA = std::make_shared<Enemy>("EnemyA");
-	std::shared_ptr<Enemy> enemyB = std::make_shared<Enemy>("EnemyB");
-	std::shared_ptr<Enemy> enemyC = std::make_shared<Enemy>("EnemyC");
-
-
+	game.Run(); //ゲーム実行
 
 	return 0;
 
